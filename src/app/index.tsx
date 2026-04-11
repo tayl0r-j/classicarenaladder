@@ -16,7 +16,7 @@ import { PlayerRow } from '@/components/PlayerRow';
 import { useArenaLadder } from '@/hooks/useArenaLadder';
 import { ArenaBracket, ArenaPlayer } from '@/types';
 
-const ROW_HEIGHT = 88;
+const ROW_HEIGHT = 58;
 
 export default function LadderScreen() {
   const [bracket, setBracket] = useState<ArenaBracket>('2v2');
@@ -69,6 +69,19 @@ export default function LadderScreen() {
             autoCapitalize="none"
           />
         </View>
+
+        {/* ── Column Headers ── */}
+        <View style={styles.colHeader}>
+          <View style={styles.colAccentSpace} />
+          <Text style={[styles.colLabel, styles.colRank]}>RANK</Text>
+          <Text style={[styles.colLabel, styles.colRating]}>RATING</Text>
+          <Text style={[styles.colLabel, styles.colName]}>PLAYER</Text>
+          <Text style={[styles.colLabel, styles.colSpec]}>SPEC</Text>
+          <Text style={[styles.colLabel, styles.colWL]}>W – L</Text>
+          <Text style={[styles.colLabel, styles.colWinPct]}>WIN%</Text>
+        </View>
+
+        <View style={styles.colHeaderDivider} />
 
         {/* ── Player List ── */}
         <FlatList
@@ -175,6 +188,54 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#F0E6D3',
     paddingVertical: 0,
+  },
+  // Column headers — widths must match PlayerRow exactly
+  colHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+    backgroundColor: '#07080F',
+  },
+  colAccentSpace: {
+    width: 2,
+  },
+  colLabel: {
+    fontFamily: 'JetBrainsMono-Regular',
+    fontSize: 9,
+    color: '#2A3D52',
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
+  colRank: {
+    width: 44,
+    textAlign: 'center',
+  },
+  colRating: {
+    width: 68,
+    textAlign: 'right',
+    paddingRight: 12,
+  },
+  colName: {
+    flex: 1,
+    paddingRight: 8,
+  },
+  colSpec: {
+    width: 130,
+    paddingRight: 8,
+  },
+  colWL: {
+    width: 88,
+    textAlign: 'right',
+    paddingRight: 12,
+  },
+  colWinPct: {
+    width: 44,
+    textAlign: 'right',
+    paddingRight: 16,
+  },
+  colHeaderDivider: {
+    height: 1,
+    backgroundColor: '#1C2333',
   },
   // Empty state
   emptyContainer: {

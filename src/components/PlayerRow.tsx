@@ -1,4 +1,3 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -9,55 +8,57 @@ interface Props {
   player: ArenaPlayer;
 }
 
-function getRankStyle(rank: number): { color: string; fontSize: number; fontFamily: string } {
-  if (rank === 1) return { color: '#FFD700', fontSize: 22, fontFamily: 'Cinzel-Bold' };
-  if (rank === 2) return { color: '#C0C0C0', fontSize: 20, fontFamily: 'Cinzel-Bold' };
-  if (rank === 3) return { color: '#CD7F32', fontSize: 20, fontFamily: 'Cinzel-Bold' };
-  if (rank <= 10) return { color: '#E8D5A3', fontSize: 16, fontFamily: 'Cinzel-Regular' };
-  return { color: '#445566', fontSize: 13, fontFamily: 'JetBrainsMono-Regular' };
+function getRankColor(rank: number): string {
+  if (rank === 1) return '#FFD700';
+  if (rank === 2) return '#C0C0C0';
+  if (rank === 3) return '#CD7F32';
+  if (rank <= 10) return '#C8B89A';
+  return '#4A5F78';
 }
 
 export function PlayerRow({ player }: Props) {
   const router = useRouter();
   const classInfo = CLASS_DATA[player.class];
-  const rankStyle = getRankStyle(player.rank);
+  const winPct = Math.round((player.wins / (player.wins + player.losses)) * 100);
 
   return (
-    <Pressable onPress={() => router.push(`/player/${player.name.toLowerCase()}`)}>
-      {({ pressed }) => (
-        <LinearGradient
-          colors={[classInfo.color + (pressed ? '28' : '1A'), pressed ? '#0C1018' : '#07080F']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0.5, y: 0 }}
-          style={styles.row}
-        >
-          <View style={[styles.accentLine, { backgroundColor: classInfo.color }]} />
+    <Pressable
+      onPress={() => router.push(`/player/${player.name.toLowerCase()}`)}
+      style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+    >
+      <View style={[styles.accentLine, { backgroundColor: classInfo.color }]} />
 
-          <View style={styles.rankCol}>
-            <Text style={[styles.rankNumber, rankStyle]}>{player.rank}</Text>
-          </View>
+      <Text style={[styles.rank, { color: getRankColor(player.rank) }]}>
+        {player.rank}
+      </Text>
 
-          <Text style={styles.classIcon}>{classInfo.icon}</Text>
+      <Text style={[styles.rating, { color: classInfo.textColor }]}>
+        {player.rating.toLocaleString()}
+      </Text>
 
-          <View style={styles.infoCol}>
-            <Text style={styles.playerName} numberOfLines={1}>
-              {player.name}
-            </Text>
-            <Text style={styles.realmSpec} numberOfLines={1}>
-              {player.realm} · {player.spec} {classInfo.displayName}
-            </Text>
-          </View>
+      <View style={styles.nameCol}>
+        <Text style={[styles.playerName, { color: classInfo.textColor }]} numberOfLines={1}>
+          {player.name}
+        </Text>
+        <Text style={styles.realmText} numberOfLines={1}>
+          {player.realm}
+        </Text>
+      </View>
 
-          <View style={styles.statsCol}>
-            <Text style={[styles.rating, { color: classInfo.textColor }]}>
-              {player.rating.toLocaleString()}
-            </Text>
-            <Text style={styles.record}>
-              {player.wins}W · {player.losses}L
-            </Text>
-          </View>
-        </LinearGradient>
-      )}
+      <View style={styles.specCol}>
+        <Text style={styles.classIcon}>{classInfo.icon}</Text>
+        <Text style={styles.specText} numberOfLines={1}>
+          {player.spec}
+        </Text>
+      </View>
+
+      <View style={styles.wlCol}>
+        <Text style={styles.wins}>{player.wins}</Text>
+        <Text style={styles.wlSep}> – </Text>
+        <Text style={styles.losses}>{player.losses}</Text>
+      </View>
+
+      <Text style={styles.winPct}>{winPct}%</Text>
     </Pressable>
   );
 }
@@ -66,56 +67,95 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 88,
-    paddingRight: 20,
-    gap: 12,
+    height: 58,
+    backgroundColor: '#07080F',
+    borderBottomWidth: 1,
+    borderBottomColor: '#0F1220',
+    gap: 0,
+  },
+  rowPressed: {
+    backgroundColor: '#0C1018',
   },
   accentLine: {
     width: 2,
     alignSelf: 'stretch',
   },
-  rankCol: {
-    width: 40,
-    alignItems: 'center',
-  },
-  rankNumber: {
-    letterSpacing: 0.5,
-  },
-  classIcon: {
-    fontSize: 24,
-    width: 32,
+  rank: {
+    width: 44,
     textAlign: 'center',
+    fontFamily: 'Cinzel-Bold',
+    fontSize: 13,
+    letterSpacing: 0.3,
   },
-  infoCol: {
+  rating: {
+    width: 68,
+    textAlign: 'right',
+    fontFamily: 'JetBrainsMono-Bold',
+    fontSize: 14,
+    letterSpacing: 0.5,
+    paddingRight: 12,
+  },
+  nameCol: {
     flex: 1,
-    gap: 5,
     minWidth: 0,
+    paddingRight: 8,
+    gap: 2,
   },
   playerName: {
     fontFamily: 'Cinzel-Bold',
-    fontSize: 15,
-    color: '#F0E6D3',
-    letterSpacing: 0.5,
+    fontSize: 13,
+    letterSpacing: 0.3,
   },
-  realmSpec: {
+  realmText: {
     fontFamily: 'JetBrainsMono-Regular',
-    fontSize: 11,
-    color: '#4A6080',
+    fontSize: 10,
+    color: '#3A4F65',
     letterSpacing: 0.2,
   },
-  statsCol: {
-    alignItems: 'flex-end',
-    gap: 3,
-    minWidth: 88,
+  specCol: {
+    width: 130,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingRight: 8,
   },
-  rating: {
-    fontFamily: 'Cinzel-Bold',
-    fontSize: 22,
-    letterSpacing: 0.5,
+  classIcon: {
+    fontSize: 14,
   },
-  record: {
+  specText: {
     fontFamily: 'JetBrainsMono-Regular',
     fontSize: 11,
-    color: '#4A6080',
+    color: '#6B8099',
+    flex: 1,
+  },
+  wlCol: {
+    width: 88,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingRight: 12,
+  },
+  wins: {
+    fontFamily: 'JetBrainsMono-Bold',
+    fontSize: 12,
+    color: '#4ADE80',
+  },
+  wlSep: {
+    fontFamily: 'JetBrainsMono-Regular',
+    fontSize: 12,
+    color: '#2A3D52',
+  },
+  losses: {
+    fontFamily: 'JetBrainsMono-Bold',
+    fontSize: 12,
+    color: '#FC6B6B',
+  },
+  winPct: {
+    width: 44,
+    textAlign: 'right',
+    fontFamily: 'JetBrainsMono-Regular',
+    fontSize: 11,
+    color: '#4A5F78',
+    paddingRight: 16,
   },
 });
