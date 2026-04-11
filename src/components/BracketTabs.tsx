@@ -1,5 +1,4 @@
-import { LinearGradient } from 'expo-linear-gradient';
-import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { ArenaBracket } from '@/types';
 
@@ -12,68 +11,55 @@ interface Props {
 
 export function BracketTabs({ selectedBracket, onSelect }: Props) {
   return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.container}
-    >
+    <View style={styles.container}>
       {BRACKETS.map((bracket) => {
         const isActive = bracket === selectedBracket;
         return (
-          <Pressable key={bracket} onPress={() => onSelect(bracket)} style={styles.pressable}>
-            {isActive ? (
-              <LinearGradient
-                colors={['#1A2F6B', '#0E1C48']}
-                style={[styles.tab, styles.activeTab]}
-              >
-                <Text style={[styles.label, styles.activeLabel]}>{bracket}</Text>
-              </LinearGradient>
-            ) : (
-              <LinearGradient
-                colors={['#0F1626', '#080C14']}
-                style={styles.tab}
-              >
-                <Text style={styles.label}>{bracket}</Text>
-              </LinearGradient>
-            )}
+          <Pressable
+            key={bracket}
+            style={({ pressed }) => [styles.tab, pressed && styles.tabPressed]}
+            onPress={() => onSelect(bracket)}
+          >
+            <Text style={[styles.label, isActive && styles.activeLabel]}>{bracket}</Text>
+            {isActive && <View style={styles.underline} />}
           </Pressable>
         );
       })}
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    gap: 10,
-  },
-  pressable: {
-    borderRadius: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#1C2333',
   },
   tab: {
-    paddingHorizontal: 28,
-    paddingVertical: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#1A2540',
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: 72,
+    paddingTop: 14,
+    paddingBottom: 12,
+    gap: 0,
   },
-  activeTab: {
-    borderColor: '#C8A84B',
-    borderWidth: 1.5,
+  tabPressed: {
+    opacity: 0.7,
   },
   label: {
     fontFamily: 'Cinzel-Regular',
-    fontSize: 14,
-    color: '#6B8099',
-    letterSpacing: 1,
+    fontSize: 13,
+    color: '#3A4F65',
+    letterSpacing: 1.5,
   },
   activeLabel: {
+    fontFamily: 'Cinzel-Bold',
     color: '#C8A84B',
+  },
+  underline: {
+    height: 2,
+    width: 28,
+    backgroundColor: '#C8A84B',
+    borderRadius: 1,
+    marginTop: 8,
   },
 });
