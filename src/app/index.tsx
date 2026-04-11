@@ -38,6 +38,7 @@ export default function LadderScreen() {
   return (
     <LinearGradient colors={['#07080F', '#0B0F1A', '#07080F']} style={styles.gradient}>
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
+        <View style={styles.content}>
 
         {/* ── Header ── */}
         <View style={styles.header}>
@@ -96,6 +97,7 @@ export default function LadderScreen() {
           keyboardDismissMode="on-drag"
           removeClippedSubviews
         />
+        </View>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -117,6 +119,12 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
+    alignItems: 'center',
+  },
+  content: {
+    flex: 1,
+    width: '100%',
+    maxWidth: 860,
   },
   // Header
   header: {
