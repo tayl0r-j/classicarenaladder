@@ -244,12 +244,12 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   backArrow: {
-    fontFamily: 'JetBrainsMono-Bold',
+    fontFamily: 'JetBrainsMono_700Bold',
     fontSize: 18,
     color: '#C8A84B',
   },
   backLabel: {
-    fontFamily: 'Cinzel-Regular',
+    fontFamily: 'Inter_400Regular',
     fontSize: 11,
     color: '#6B8099',
     letterSpacing: 1.5,
@@ -287,13 +287,13 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   heroName: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 26,
     color: '#E8D5A3',
     letterSpacing: 1,
   },
   heroRealm: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 13,
     color: '#6B8099',
   },
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.04)',
   },
   heroSpecText: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 11,
     letterSpacing: 0.3,
   },
@@ -317,7 +317,7 @@ const styles = StyleSheet.create({
     paddingTop: 4,
   },
   heroRankLabel: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 10,
     color: '#6B8099',
   },
@@ -344,24 +344,24 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   statValue: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 24,
     letterSpacing: 0.5,
   },
   statValueGold: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 24,
     color: '#C8A84B',
     letterSpacing: 0.5,
   },
   statValueMuted: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 24,
     color: '#E8D5A3',
     letterSpacing: 0.5,
   },
   statLabel: {
-    fontFamily: 'Cinzel-Regular',
+    fontFamily: 'Inter_400Regular',
     fontSize: 9,
     color: '#4A6080',
     letterSpacing: 1.5,
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   sectionTitle: {
-    fontFamily: 'Cinzel-Regular',
+    fontFamily: 'Inter_400Regular',
     fontSize: 10,
     color: '#4A6080',
     letterSpacing: 2,
@@ -385,12 +385,12 @@ const styles = StyleSheet.create({
     alignItems: 'baseline',
   },
   winRatePct: {
-    fontFamily: 'JetBrainsMono-Bold',
+    fontFamily: 'JetBrainsMono_700Bold',
     fontSize: 20,
     color: '#C8A84B',
   },
   winRateRecord: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 13,
     color: '#6B8099',
   },
@@ -412,12 +412,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   winLabel: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 10,
     color: '#4A6080',
   },
   lossLabel: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 10,
     color: '#4A6080',
   },
@@ -442,7 +442,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bracketPillText: {
-    fontFamily: 'Cinzel-Regular',
+    fontFamily: 'Inter_400Regular',
     fontSize: 12,
     color: '#C8A84B',
     letterSpacing: 0.5,
@@ -455,22 +455,22 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   bracketRating: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 18,
     letterSpacing: 0.5,
   },
   bracketRecord: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 11,
     color: '#6B8099',
   },
   bracketWinPct: {
-    fontFamily: 'JetBrainsMono-Bold',
+    fontFamily: 'JetBrainsMono_700Bold',
     fontSize: 13,
     color: '#C8A84B',
   },
   bracketUnranked: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 13,
     color: '#3A4F65',
     flex: 1,
@@ -496,7 +496,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   classDisplayName: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 16,
     color: '#E8D5A3',
     flex: 1,
@@ -524,7 +524,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   specPillName: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 12,
     color: '#6B8099',
     letterSpacing: 0.3,
@@ -540,13 +540,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   notFoundTitle: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 18,
     color: '#E8D5A3',
     letterSpacing: 1,
   },
   notFoundSub: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 13,
     color: '#6B8099',
   },

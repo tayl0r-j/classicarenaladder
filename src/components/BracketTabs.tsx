@@ -46,13 +46,13 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   label: {
-    fontFamily: 'Cinzel-Regular',
+    fontFamily: 'Inter_400Regular',
     fontSize: 13,
     color: '#3A4F65',
     letterSpacing: 1.5,
   },
   activeLabel: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_600SemiBold',
     color: '#C8A84B',
   },
   underline: {

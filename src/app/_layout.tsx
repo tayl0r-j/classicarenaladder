@@ -1,32 +1,42 @@
-/**
- * Root layout — loads custom fonts then renders the app.
- *
- * To enable custom fonts, download from Google Fonts → assets/fonts/ then
- * uncomment the useFonts block below:
- *   Cinzel-Regular.ttf + Cinzel-Bold.ttf   https://fonts.google.com/specimen/Cinzel
- *   JetBrainsMono-Regular.ttf + JetBrainsMono-Bold.ttf  https://fonts.google.com/specimen/JetBrains+Mono
- */
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  useFonts as useInterFonts,
+} from '@expo-google-fonts/inter';
+import {
+  JetBrainsMono_400Regular,
+  JetBrainsMono_700Bold,
+  useFonts as useJetBrainsMonoFonts,
+} from '@expo-google-fonts/jetbrains-mono';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
-// Uncomment when font files are present in assets/fonts/:
-// import { useFonts } from 'expo-font';
-// const [fontsLoaded] = useFonts({
-//   'Cinzel-Regular':        require('../../assets/fonts/Cinzel-Regular.ttf'),
-//   'Cinzel-Bold':           require('../../assets/fonts/Cinzel-Bold.ttf'),
-//   'JetBrainsMono-Regular': require('../../assets/fonts/JetBrainsMono-Regular.ttf'),
-//   'JetBrainsMono-Bold':    require('../../assets/fonts/JetBrainsMono-Bold.ttf'),
-// });
-// if (!fontsLoaded) return null;
-
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [interLoaded] = useInterFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+  });
+
+  const [monoLoaded] = useJetBrainsMonoFonts({
+    JetBrainsMono_400Regular,
+    JetBrainsMono_700Bold,
+  });
+
   useEffect(() => {
-    SplashScreen.hideAsync();
-  }, []);
+    if (interLoaded && monoLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [interLoaded, monoLoaded]);
+
+  if (!interLoaded || !monoLoaded) return null;
 
   return (
     <>

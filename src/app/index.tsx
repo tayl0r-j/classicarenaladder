@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   headerTitle: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 32,
     color: '#C8A84B',
     letterSpacing: 3,
@@ -160,13 +160,13 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
   },
   seasonText: {
-    fontFamily: 'JetBrainsMono-Bold',
+    fontFamily: 'JetBrainsMono_700Bold',
     fontSize: 12,
     color: '#C8A84B',
     letterSpacing: 1,
   },
   headerSub: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 11,
     color: '#3A4F65',
     marginTop: 8,
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 13,
     color: '#F0E6D3',
     paddingVertical: 0,
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     width: 2,
   },
   colLabel: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 9,
     color: '#2A3D52',
     letterSpacing: 1.5,
@@ -260,13 +260,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   emptyTitle: {
-    fontFamily: 'Cinzel-Bold',
+    fontFamily: 'Inter_700Bold',
     fontSize: 18,
     color: '#F0E6D3',
     letterSpacing: 1,
   },
   emptySubtitle: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 13,
     color: '#6B8099',
   },

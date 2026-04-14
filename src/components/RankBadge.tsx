@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   medalText: {
-    fontFamily: 'JetBrainsMono-Bold',
+    fontFamily: 'JetBrainsMono_700Bold',
     fontSize: 13,
     fontWeight: '700',
     color: '#FFFFFF',
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderColor: '#1A2540',
   },
   normalText: {
-    fontFamily: 'JetBrainsMono-Regular',
+    fontFamily: 'JetBrainsMono_400Regular',
     fontSize: 12,
     color: '#6B8099',
   },
